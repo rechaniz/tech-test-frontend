@@ -1,0 +1,37 @@
+<table mat-table [dataSource]="movements">
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Horodatage </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.movementTime}} </td>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.type}} </td>
+  </ng-container>
+  <ng-container matColumnDef="from">
+    <th mat-header-cell *matHeaderCellDef> De </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.comingFromCode}} </td>
+  </ng-container>
+  <ng-container matColumnDef="to">
+    <th mat-header-cell *matHeaderCellDef> Vers </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.goingToCode}} </td>
+  </ng-container>
+  <ng-container matColumnDef="reference">
+    <th mat-header-cell *matHeaderCellDef> Reference </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.product.refType}} {{movement.product.refNumber}} </td>
+  </ng-container>
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantité </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.product.quantity}} </td>
+  </ng-container>
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Poids </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.product.weight}} </td>
+  </ng-container>
+  <ng-container matColumnDef="customsStatus">
+    <th mat-header-cell *matHeaderCellDef> Statut douanier </th>
+    <td mat-cell *matCellDef="let movement"> {{movement.customsStatus}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>
+

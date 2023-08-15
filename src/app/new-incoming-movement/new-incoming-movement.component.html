@@ -1,0 +1,94 @@
+<h3>Nouveau mouvement entrant</h3>
+
+<form [formGroup]="movementForm">
+  <mat-grid-list cols="2" rowHeight="100px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput type="text" formControlName="movementId">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Horodatage du mouvement</mat-label>
+        <input matInput [ngxMatDatetimePicker]="picker">
+        <mat-hint>JJ/MM/AAAA</mat-hint>
+        <ngx-mat-datepicker-toggle matIconSuffix [for]="picker"></ngx-mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker [showSeconds]="true"></ngx-mat-datetime-picker>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Entrepôt</mat-label>
+        <mat-select formControlName="warehouse">
+          <mat-option *ngFor="let warehouse of warehouses" [value]="warehouse">
+            {{warehouse.code}} - {{warehouse.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Statut douanier</mat-label>
+        <mat-select formControlName="customsStatus">
+          <mat-option *ngFor="let customsStatus of customsStatuses" [value]="customsStatus">
+            {{customsStatus}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Type de référence</mat-label>
+        <mat-select formControlName="refType">
+          <mat-option *ngFor="let refType of refTypes" [value]="refType">
+            {{refType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Référence produit</mat-label>
+        <input matInput type="text" formControlName="refValue">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field id="goodsLabel">
+        <mat-label>Description produit</mat-label>
+        <input matInput type="text" formControlName="goodsLabel">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Quantité</mat-label>
+        <input appDisableArrows matInput type="number" formControlName="quantity">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Quantité totale</mat-label>
+        <input appDisableArrows matInput type="number" formControlName="totalQuantity">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Poids</mat-label>
+        <input appDisableArrows matInput type="number" formControlName="weight">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Poids total</mat-label>
+        <input appDisableArrows matInput type="number" formControlName="totalWeight">
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+  <button mat-raised-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" [disabled]="!movementForm.valid" (click)="onSubmit()">Valider</button>
+</form>

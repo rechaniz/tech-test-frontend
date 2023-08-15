@@ -1,0 +1,22 @@
+<div id="app-container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Movement-in-and-out-ator</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+      <mat-list>
+        <mat-list-item><a mat-button [routerLink]="''">Liste des mouvements</a></mat-list-item>
+        <mat-list-item><a mat-button [routerLink]="'newIncomingMovement'">Nouvelle entrée</a></mat-list-item>
+        <mat-list-item><a mat-button [routerLink]="'newOutgoingMovement'">Nouvelle sortie</a></mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="padding: 20px">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
